@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:58:38 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/08 21:05:54 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/09 14:14:13 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_struct(int ac, char **av, t_data *data)
 	data->n_eat = -1;
 	if (ac == 6)
 		data->n_eat = ft_atoi(av[5]);
+	data->start = get_time();
 }
 int	main(int ac, char **av)
 {

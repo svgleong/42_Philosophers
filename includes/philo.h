@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:49:23 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/08 21:05:11 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/09 14:34:01 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@
 
 typedef struct s_data
 {
-	int	n_philos;
-	int	t_die;
-	int	t_eat;
-	int	t_sleep;
-	int	n_eat;
+	int			n_philos;
+	int			t_die;
+	int			t_eat;
+	int			t_sleep;
+	int			n_eat;
+	uint64_t	start;	
 }		t_data;
 
 typedef struct s_philos
@@ -49,6 +50,8 @@ typedef struct s_philos
 //------------ Prototypes -----------
 
 void	check_arguments(int ac, char **av);
+t_data *data(void);
+
 
 void	ft_putstr_fd(char *str, int fd);
 void	ft_error_msg(char *msg);

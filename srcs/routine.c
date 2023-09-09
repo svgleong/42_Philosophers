@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:58:05 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/08 21:06:36 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/09 14:23:30 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*routine(void *philos)
 	start = get_time();
 	usleep(10000); // value in microseconds but it is not precise
 	now = get_time();
-	printf("%llu milliseconds have passed since the start\n", now - start);
+	printf("%lu milliseconds have passed since the start\n", now - start);
 	return (NULL);
 }

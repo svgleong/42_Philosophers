@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+         #
+#    By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 19:11:20 by svalente          #+#    #+#              #
-#    Updated: 2023/09/08 21:04:05 by svalente         ###   ########.fr        #
+#    Updated: 2023/09/09 14:34:14 by svalente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC_NAME =	check_arguments.c			\
 			time.c						\
 			start.c 					\
 			routine.c					\
+			global.c 					\
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
 
