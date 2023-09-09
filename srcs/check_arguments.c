@@ -6,87 +6,67 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 20:15:01 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/05 11:53:39 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/08 20:34:57 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+//#include <philo.h>
+#include "../includes/philo.h" // apagar
 
-static int	check_num(int ac, char **av);
-static long	ft_atol(const char *str);
-static int	check_limits(int ac, char **av);
+static int	check_num(char *str);
+static int	check_limits(char *str);
 
 void	check_arguments(int ac, char **av)
 {
-	(void)av;
-	if (!(ac >= 5 && ac <= 6))
-		ft_error_msg("Error: Invalid number of arguments\n");
-	if (check_num(ac, av))
-		if (check_limits(ac, av))
-			return ;
-	ft_error_msg("Error: Invalid arguments\n");
-}
-
-static int	check_num(int ac, char **av)
-{
-	int	i;
-	int	j;
+	int i;
 
 	i = 1;
-	while (i < ac)
+	if (!(ac >= 5 && ac <= 6))
+		ft_error_msg("Error: Invalid number of arguments\n");
+	while (av[i] && i < ac)
 	{
-		j = 0;
-		while (av[i][j])
-		{
-			if (j == 0 && (av[i][j] == '-' || av[i][j] == '+'))
-				j++;
-			if ((av[i][j] >= '0' && av[i][j] <= '9'))
-				j++;
-			else
-				return (0);
-		}
+		//printf("%d: %s\n", i, av[i]);
+		if (!check_num(av[i]) || !check_limits(av[i]))
+			ft_error_msg("Error: Invalid arguments\n");
 		i++;
+	}
+	return ;
+}
+
+static int	check_num(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (i == 0 && (str[i] == '+'))
+			i++;
+		if (i == 0 && (str[i] == '-'))
+			return (0);
+		if ((str[i] >= '0' && str[i] <= '9'))
+			i++;
+		else
+			return (0);
 	}
 	return (1);
 }
 
-static long	ft_atol(const char *str)
+static int	check_limits(char *str)
 {
 	long	res;
-	long	sign;
-	long	i;
+	int		i;
 
 	res = 0;
-	sign = 1;
 	i = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = res * 10 + str[i] - 48;
 		i++;
-		if ((res * sign) > INT_MAX || (res * sign) < INT_MIN)
-			return (3737373737);
-	}
-	return (sign * res);
-}
-
-static int	check_limits(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	while (i < ac)
-	{
-		if (ft_atol(av[i]) == 3737373737)
+		if (res > INT_MAX || res < INT_MIN)
 			return (0);
-		i++;
 	}
 	return (1);
 }
