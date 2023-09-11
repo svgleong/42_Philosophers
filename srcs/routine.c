@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:58:05 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/09 14:23:30 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/10 11:23:23 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*routine(void *philos)
 {
-	(void)philos;
+	philos = (t_philos *)philos;
 	uint64_t	start;
 	uint64_t	now;
 	

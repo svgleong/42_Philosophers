@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:49:23 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/09 14:34:01 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/11 11:16:43 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,32 @@ typedef struct s_data
 	int			t_eat;
 	int			t_sleep;
 	int			n_eat;
-	uint64_t	start;	
+	uint64_t	start;
+	pthread_t	*philos;	
 }		t_data;
 
 typedef struct s_philos
 {
-	t_data			data;
 	pthread_t		philo;
 	int				id;
+	int				n_eats;
+	pthread_mutex_t	*fork;
 }				t_philos;
 
 
 //------------ Prototypes -----------
 
-void	check_arguments(int ac, char **av);
-t_data *data(void);
+void		check_arguments(int ac, char **av);
+t_data 		*data(void);
 
 
-void	ft_putstr_fd(char *str, int fd);
-void	ft_error_msg(char *msg);
-int		ft_atoi(const char *str);
+void		ft_putstr_fd(char *str, int fd);
+void		ft_error_msg(char *msg);
+int			ft_atoi(const char *str);
 uint64_t	get_time(void);
 
-void	*routine(void *philos);
-t_philos *create_threads(t_data	data);
+void		*routine(void *philos);
+void		(t_data	*data);
 
 
 #endif
