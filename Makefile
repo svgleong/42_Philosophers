@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+         #
+#    By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 19:11:20 by svalente          #+#    #+#              #
-#    Updated: 2023/09/09 14:34:14 by svalente         ###   ########.fr        #
+#    Updated: 2023/09/11 12:55:10 by svalente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ $(VERBOSE).SILENT:
 HEADER = philo.h
 
 INC = ./includes
-CFLAGS = -Wall -Werror -Wextra -I$(INC) -g -fsanitize=thread 
+CFLAGS = -Wall -Werror -Wextra -I$(INC) -g -fsanitize=address
 
 SRC_PATH = ./srcs
 

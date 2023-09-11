@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:32:26 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/08 20:34:39 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:29:57 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_data *data(void)
 	return (&data);
 }
 
-t_philos *philos(void)
+t_philo *philos(void)
 {
-	static t_philos philos;
+	static t_philo philos;
 
 	return (&philos);
 }

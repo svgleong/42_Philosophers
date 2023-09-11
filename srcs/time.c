@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:04:11 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/09 14:34:41 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:28:42 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ uint64_t	get_time(void) // returns time in miliseconds 1 sec = 1000 mili
 
 uint64_t	time_diff(void)
 {
-	return (get_time() - data().start)
+	return (get_time() - data()->start);
 }
 
 void	example(void)
@@ -50,5 +50,5 @@ void	example(void)
 	start = get_time();
 	usleep(10000); // value in microseconds but it is not precise
 	now = get_time();
-	printf("%ld milliseconds have passed since the start\n", now - start);
+	printf("%llu milliseconds have passed since the start\n", now - start);
 }

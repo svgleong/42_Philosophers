@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:49:23 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/11 11:16:43 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:18:08 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 //------------ Defines --------------
 
 //------------ Structs --------------
-
 typedef struct s_data
 {
 	int			n_philos;
@@ -37,16 +36,25 @@ typedef struct s_data
 	int			t_sleep;
 	int			n_eat;
 	uint64_t	start;
-	pthread_t	*philos;	
+	
 }		t_data;
 
-typedef struct s_philos
+typedef struct s_fork
 {
+	int				status;
+	pthread_mutex_t	lock;
+}				t_fork;
+
+typedef struct s_philo
+{
+	t_data			*data;
+	t_fork			*forks;
 	pthread_t		philo;
 	int				id;
 	int				n_eats;
-	pthread_mutex_t	*fork;
-}				t_philos;
+}				t_philo;
+
+
 
 
 //------------ Prototypes -----------
@@ -61,7 +69,9 @@ int			ft_atoi(const char *str);
 uint64_t	get_time(void);
 
 void		*routine(void *philos);
-void		(t_data	*data);
+int			create_threads(t_philo	*philos);
+t_fork		*init_forks(t_data *data);
+void		init_philos(t_data *data, t_philo *philos, t_fork *forks);
 
 
 #endif
