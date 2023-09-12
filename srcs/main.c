@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:58:38 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/11 16:11:17 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:09:30 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,27 @@ void	init_struct(int ac, char **av, t_data *data)
 	data->n_eat = -1;
 	if (ac == 6)
 		data->n_eat = ft_atoi(av[5]);
+	else
+		data->n_eat = INT_MAX;
 	data->start = get_time();
+	pthread_mutex_init(&data->print, NULL); // dont forget to destroy
 }
 int	main(int ac, char **av)
 {
-	t_data	data;
 	t_philo	*philos;
 	t_fork	*forks;
 	
-	check_arguments(ac, av);
-	init_struct(ac, av, &data);
-	forks = init_forks(&data);
+	if(check_arguments(ac, av) == 0)
+		return (0);
+	init_struct(ac, av, data());
+	//printf("start time: %llu\n", data()->start);
+	forks = init_forks(data());
 	if(!forks)
 		return (0); // fazer function error_handler
-	philos = malloc(sizeof(t_philo) * data.n_philos);
+	philos = malloc(sizeof(t_philo) * data()->n_philos);
 	if (!philos)
 		return (0);
-	init_philos(&data, philos, forks);
+	init_philos(data(), philos, forks);
 	create_threads(philos);
 	if(!philos)
 		return (0); // fazer function error_handler

@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 20:22:49 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/08 20:30:44 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:09:50 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	ft_putstr_fd(char *str, int fd)
 	}
 }
 
-void	ft_error_msg(char *msg)
+int	ft_error_msg(char *msg)
 {
 	ft_putstr_fd(msg, 1);
-	exit(EXIT_FAILURE);
+	return(0);
 }
 
 int	ft_atoi(const char *str)
@@ -55,3 +55,8 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * res);
 }
+
+/* void	print_msg(char *msg)
+{
+	
+} */

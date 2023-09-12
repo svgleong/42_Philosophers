@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:35:37 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/11 16:17:43 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:13:30 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 int	create_threads(t_philo	*philos)
 {
-	int			i;
+	int	i;
 
 	i = -1;
 	while (++i < philos[0].data->n_philos)
 	{
 		if (pthread_create(&philos[i].philo, NULL, &routine, &philos[i]))
 			return (0);
-		philos[i].id = i + 1;
 	}
 	i = -1;
 	while (++i < philos[0].data->n_philos)
@@ -56,5 +55,6 @@ void	init_philos(t_data *data, t_philo *philos, t_fork *forks)
 		philos[i].data = data;
 		philos[i].forks = forks;
 		philos[i].id = i + 1;
+		philos[i].n_meals = 0;
 	}
 }

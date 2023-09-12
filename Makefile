@@ -6,7 +6,7 @@
 #    By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 19:11:20 by svalente          #+#    #+#              #
-#    Updated: 2023/09/11 12:55:10 by svalente         ###   ########.fr        #
+#    Updated: 2023/09/11 16:37:29 by svalente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 EXTRA_FLAGS = -pthread
 RM = rm -f
 
-$(VERBOSE).SILENT:
+#$(VERBOSE).SILENT:
 
 HEADER = philo.h
 
