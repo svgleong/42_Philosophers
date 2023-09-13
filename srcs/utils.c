@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 20:22:49 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/12 14:09:50 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:28:53 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,16 @@ int	ft_atoi(const char *str)
 	return (sign * res);
 }
 
-/* void	print_msg(char *msg)
+void	print_status(t_philo *philo, char *status)
 {
-	
-} */
+	pthread_mutex_lock(&philo->data->death.lock);
+	if (philo->data->death.status == 1)
+	{
+		pthread_mutex_unlock(&philo->data->death.lock);
+		return ;
+	}
+	pthread_mutex_lock(&philo->data->print);
+	printf("%llu %d %s\n", time_diff(), philo->id, status);
+	pthread_mutex_unlock(&philo->data->print);
+	pthread_mutex_unlock(&philo->data->death.lock);
+}

@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:49:23 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/12 17:09:12 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:29:02 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 //------------ Defines --------------
 
 //------------ Structs --------------
+typedef struct s_death
+{
+	int				status;
+	pthread_mutex_t	lock;
+}				t_death;
+
 typedef struct s_data
 {
 	int				n_philos;
@@ -37,8 +43,9 @@ typedef struct s_data
 	int				n_eat;
 	uint64_t		start;
 	pthread_mutex_t	print;
-	pthread_mutex_t	death;
+	t_death			death;
 }		t_data;
+
 
 typedef struct s_fork
 {
@@ -53,6 +60,7 @@ typedef struct s_philo
 	pthread_t		philo;
 	int				id;
 	int				n_meals;
+	uint64_t		last_meal;
 }				t_philo;
 
 
@@ -67,6 +75,7 @@ t_data 		*data(void);
 void		ft_putstr_fd(char *str, int fd);
 int			ft_error_msg(char *msg);
 int			ft_atoi(const char *str);
+void		print_status(t_philo *philo, char *status);
 uint64_t	get_time(void);
 
 void		*routine(void *philos);
@@ -76,6 +85,8 @@ void		init_philos(t_data *data, t_philo *philos, t_fork *forks);
 
 void		sleep_time(uint64_t time);
 uint64_t	time_diff(void);
+int			death_checker(t_philo *philo);
+int 		is_dead(t_philo *philo);
 
 
 #endif

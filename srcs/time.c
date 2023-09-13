@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:04:11 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/12 14:06:48 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:19:04 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ uint64_t	get_time(void) // returns time in miliseconds 1 sec = 1000 mili
 	return ((uint64_t)(tv.tv_sec * 1000) + (uint64_t)(tv.tv_usec / 1000));
 }
 
-
 void	sleep_time(uint64_t time)
 {
 	uint64_t	start;
@@ -52,13 +51,3 @@ uint64_t	time_diff(void)
 	uint64_t diff = get_time() - data()->start;
 	return (diff);
 }
-/* void	example(void)
-{
-	uint64_t	start;
-	uint64_t	now;
-	
-	start = get_time();
-	usleep(10000); // value in microseconds but it is not precise
-	now = get_time();
-	printf("%llu milliseconds have passed since the start\n", now - start);
-} */
