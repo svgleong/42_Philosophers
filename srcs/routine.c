@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:58:05 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 13:48:50 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:18:40 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ void	*routine(void *philo)
 
 	phi = (t_philo *)philo;
 	phi->last_meal = get_time();
+	if (phi->data->n_philos % 2 != 0 && phi->id == phi->data->n_philos)
+		print_status(phi, "is thinking", GREEN);
 	if (phi->id % 2 == 0)
+	{
+		print_status(phi, "is thinking", GREEN);
 		sleep_time(phi->data->t_eat, philo);
+	}
 	while (phi->n_meals < phi->data->n_eat && !death_checker(phi))
 	{
 		eating(phi);
