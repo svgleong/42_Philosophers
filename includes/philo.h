@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:49:23 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/13 12:29:02 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/13 14:41:27 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int			create_threads(t_philo	*philos);
 t_fork		*init_forks(t_data *data);
 void		init_philos(t_data *data, t_philo *philos, t_fork *forks);
 
-void		sleep_time(uint64_t time);
+void		sleep_time(uint64_t time, t_philo *philo);
 uint64_t	time_diff(void);
 int			death_checker(t_philo *philo);
 int 		is_dead(t_philo *philo);

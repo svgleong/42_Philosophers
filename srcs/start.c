@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:35:37 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/13 11:06:38 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:33:40 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	init_philos(t_data *data, t_philo *philos, t_fork *forks)
 		philos[i].forks = forks;
 		philos[i].id = i + 1;
 		philos[i].n_meals = 0;
-		philos[i].last_meal = data->start;
+		philos[i].last_meal = get_time();
 	}
 }
