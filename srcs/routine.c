@@ -6,11 +6,11 @@
 /*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:58:05 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 13:25:12 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:48:50 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include <philo.h>
 
 int		eating(t_philo *philo);
 void	sleeping(t_philo *philo);
@@ -95,37 +95,4 @@ void	sleeping(t_philo *philo)
 {
 	print_status(philo, "is sleeping", PINK);
 	sleep_time(philo->data->t_sleep, philo);
-}
-
-int	is_dead(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->data->death.lock);
-	if (philo->data->death.status == 1)
-	{
-		pthread_mutex_unlock(&philo->data->death.lock);
-		return (1);
-	}
-	pthread_mutex_unlock(&philo->data->death.lock);
-	return (0);
-}
-
-int	death_checker(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->data->death.lock);
-	if (get_time() - (uint64_t)philo->last_meal >= (uint64_t)philo->data->t_die)
-	{
-		if (philo->data->death.status == 1)
-		{
-			pthread_mutex_unlock(&philo->data->death.lock);
-			return (1);
-		}
-		pthread_mutex_lock(&philo->data->print);
-		printf("%s%lu %d died\n", RED, time_diff(), philo->id);
-		pthread_mutex_unlock(&philo->data->print);
-		philo->data->death.status = 1;
-		pthread_mutex_unlock(&philo->data->death.lock);
-		return (1);
-	}
-	pthread_mutex_unlock(&philo->data->death.lock);
-	return (0);
 }

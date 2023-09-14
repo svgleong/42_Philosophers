@@ -6,12 +6,11 @@
 /*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 20:15:01 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 11:20:14 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:41:37 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <philo.h>
-#include "../includes/philo.h" // apagar
+#include <philo.h>
 
 static int	check_num(char *str);
 static int	check_limits(char *str);

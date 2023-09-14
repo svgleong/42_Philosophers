@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:49:23 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 12:21:39 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:51:09 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <limits.h>
-# include <sys/time.h> // get time
-# include <stdint.h> // uint64_t unsigned long long integer which is guaranteed to be exactly 8 bytes in size
-# include <unistd.h> // usleep
-# include <stddef.h> // NULL
+# include <sys/time.h>
+# include <stdint.h>
+# include <unistd.h>
+# include <stddef.h>
 
 //------------ Defines --------------
-#define PINK "\033[1;35m"
-#define ORANGE "\033[1;38;5;208m"
-#define GREEN "\033[1;32m"
-#define RED "\033[1;31m"
-#define YELLOW "\033[1;33m"
+# define PINK "\033[1;35m"
+# define ORANGE "\033[1;38;5;208m"
+# define GREEN "\033[1;32m"
+# define RED "\033[1;31m"
+# define YELLOW "\033[1;33m"
 
 //------------ Structs --------------
 typedef struct s_death
@@ -51,7 +51,6 @@ typedef struct s_data
 	t_death			death;
 }		t_data;
 
-
 typedef struct s_fork
 {
 	int				status;
@@ -68,14 +67,9 @@ typedef struct s_philo
 	uint64_t		last_meal;
 }				t_philo;
 
-
-
-
 //------------ Prototypes -----------
-
 int			check_arguments(int ac, char **av);
-t_data 		*data(void);
-
+t_data		*data(void);
 
 void		ft_putstr_fd(char *str, int fd);
 int			ft_error_msg(char *msg);
@@ -91,10 +85,8 @@ void		init_philos(t_data *data, t_philo *philos, t_fork *forks);
 void		sleep_time(uint64_t time, t_philo *philo);
 uint64_t	time_diff(void);
 int			death_checker(t_philo *philo);
-int 		is_dead(t_philo *philo);
+int			is_dead(t_philo *philo);
 
 int			clean_program(t_philo *philos, t_fork *forks);
-
-
 
 #endif

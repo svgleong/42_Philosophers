@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:58:38 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 12:31:16 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:42:50 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_struct(int ac, char **av, t_data *data)
 	t_death	death;
 
 	death.status = 0;
-	pthread_mutex_init(&death.lock, NULL); // destroy
+	pthread_mutex_init(&death.lock, NULL);
 	data->n_philos = ft_atoi(av[1]);
 	data->t_die = ft_atoi(av[2]);
 	data->t_eat = ft_atoi(av[3]);
@@ -35,9 +35,8 @@ void	init_struct(int ac, char **av, t_data *data)
 	else
 		data->n_eat = INT_MAX;
 	data->start = get_time();
-	pthread_mutex_init(&data->print, NULL); // dont forget to destroy
+	pthread_mutex_init(&data->print, NULL);
 	data->death = death;
-	//printf("death status: %d\n", data->death.status);
 }
 
 int	main(int ac, char **av)

@@ -6,12 +6,11 @@
 /*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 20:22:49 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 12:29:43 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:42:19 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <philo.h>
-#include "../includes/philo.h" // apagar
+#include <philo.h>
 
 void	ft_putstr_fd(char *str, int fd)
 {

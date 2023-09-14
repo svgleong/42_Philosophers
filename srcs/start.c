@@ -6,11 +6,11 @@
 /*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:35:37 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 11:58:49 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:41:57 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include <philo.h>
 
 int	create_threads(t_philo	*philos)
 {
