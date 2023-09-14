@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:58:38 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/13 13:35:41 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:31:16 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <philo.h>
-#include "../includes/philo.h" // apagar
+#include <philo.h>
+
+t_data	*data(void)
+{
+	static t_data	data;
+
+	return (&data);
+}
 
 void	init_struct(int ac, char **av, t_data *data)
 {
@@ -33,23 +39,21 @@ void	init_struct(int ac, char **av, t_data *data)
 	data->death = death;
 	//printf("death status: %d\n", data->death.status);
 }
+
 int	main(int ac, char **av)
 {
 	t_philo	*philos;
 	t_fork	*forks;
-	
-	if(check_arguments(ac, av) == 0)
+
+	if (check_arguments(ac, av) == 0)
 		return (0);
 	init_struct(ac, av, data());
-	//printf("start time: %llu\n", data()->start);
 	forks = init_forks(data());
-	if(!forks)
-		return (0); // fazer function error_handler
+	if (!forks)
+		return (clean_program(NULL, forks));
 	philos = malloc(sizeof(t_philo) * data()->n_philos);
 	if (!philos)
-		return (0);
+		return (clean_program(philos, forks));
 	init_philos(data(), philos, forks);
 	create_threads(philos);
-	if(!philos)
-		return (0); // fazer function error_handler
 }

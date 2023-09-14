@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+         #
+#    By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 19:11:20 by svalente          #+#    #+#              #
-#    Updated: 2023/09/12 19:09:32 by svalente         ###   ########.fr        #
+#    Updated: 2023/09/14 12:31:36 by svalente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-CC = gcc
+CC = cc
 EXTRA_FLAGS = -pthread
 RM = rm -f
 
@@ -33,7 +33,7 @@ SRC_NAME =	check_arguments.c			\
 			time.c						\
 			start.c 					\
 			routine.c					\
-			global.c 					\
+			clean.c 					\
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
 

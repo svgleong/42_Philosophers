@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 20:15:01 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/12 14:12:12 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:20:14 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@ static int	check_limits(char *str);
 
 int	check_arguments(int ac, char **av)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (!(ac >= 5 && ac <= 6))
 		return (ft_error_msg("Error: Invalid number of arguments\n"));
 	while (av[i] && i < ac)
 	{
-		//printf("%d: %s\n", i, av[i]);
 		if (!check_num(av[i]) || !check_limits(av[i]))
 			return (ft_error_msg("Error: Invalid arguments\n"));
 		i++;

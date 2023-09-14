@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:04:11 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/13 15:35:52 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:25:56 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 /* struct timeval
 {
 	time_t		tv_sec; 	// seconds from January 1, 1970
-							// specific point in time from which all other times are measured
+							// specific point in time from which all other 
+							// times are measured
 	suseconds_t	tv_usec;	// number of microseconds that have passed 
-							// within the current second at the time when a gettimeofday call is made
+							// within the current second at the time when a 
+							// gettimeofday call is made
 }; 
 1 sec = 1 000 000 microsec
 1 sec = 1 000 milisec
@@ -52,10 +54,13 @@ void	sleep_time(uint64_t time, t_philo *philo)
 		}
 		usleep(time / 10);
 	}
+	death_checker(philo);
 }
 
 uint64_t	time_diff(void)
 {
-	uint64_t diff = get_time() - data()->start;
+	uint64_t	diff;
+
+	diff = get_time() - data()->start;
 	return (diff);
 }

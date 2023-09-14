@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:49:23 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/13 14:41:27 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:21:39 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # include <stddef.h> // NULL
 
 //------------ Defines --------------
+#define PINK "\033[1;35m"
+#define ORANGE "\033[1;38;5;208m"
+#define GREEN "\033[1;32m"
+#define RED "\033[1;31m"
+#define YELLOW "\033[1;33m"
 
 //------------ Structs --------------
 typedef struct s_death
@@ -75,7 +80,7 @@ t_data 		*data(void);
 void		ft_putstr_fd(char *str, int fd);
 int			ft_error_msg(char *msg);
 int			ft_atoi(const char *str);
-void		print_status(t_philo *philo, char *status);
+void		print_status(t_philo *philo, char *status, char *color);
 uint64_t	get_time(void);
 
 void		*routine(void *philos);
@@ -87,6 +92,9 @@ void		sleep_time(uint64_t time, t_philo *philo);
 uint64_t	time_diff(void);
 int			death_checker(t_philo *philo);
 int 		is_dead(t_philo *philo);
+
+int			clean_program(t_philo *philos, t_fork *forks);
+
 
 
 #endif

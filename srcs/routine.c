@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:58:05 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 10:01:43 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:25:12 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int		eating(t_philo *philo);
 void	sleeping(t_philo *philo);
 
 void	*routine(void *philo)
-{	
+{
 	t_philo	*phi;
-	
+
 	phi = (t_philo *)philo;
 	phi->last_meal = get_time();
 	if (phi->id % 2 == 0)
 		sleep_time(phi->data->t_eat, philo);
-	while (phi->n_meals < phi->data->n_eat && !death_checker(phi)) //!is_dead(phi))
+	while (phi->n_meals < phi->data->n_eat && !death_checker(phi))
 	{
 		eating(phi);
 		if (is_dead(phi))
@@ -32,8 +32,8 @@ void	*routine(void *philo)
 		usleep(1000);
 		if (is_dead(phi))
 			return (NULL);
-		print_status(phi, "is thinking");
-	}	
+		print_status(phi, "is thinking", GREEN);
+	}
 	return (NULL);
 }
 
@@ -46,8 +46,8 @@ void	lock_fork(t_fork *fork, t_philo	*philo)
 		{
 			fork->status = 0;
 			pthread_mutex_unlock(&fork->lock);
-			print_status(philo, "has taken a fork");
-			break ;	
+			print_status(philo, "has taken a fork", YELLOW);
+			break ;
 		}
 		else
 			pthread_mutex_unlock(&fork->lock);
@@ -63,17 +63,17 @@ void	unlock_fork(t_fork *fork, t_philo	*philo)
 		{
 			fork->status = 1;
 			pthread_mutex_unlock(&fork->lock);
-			break ;	
+			break ;
 		}
 		else
 			pthread_mutex_unlock(&fork->lock);
-	}	
+	}
 }
 
 int	eating(t_philo *philo)
 {
 	int	fork1;
-	int fork2;
+	int	fork2;
 
 	fork1 = ((philo->id == 1) * (philo->data->n_philos - 1) + \
 	((philo->id != 1) * (philo->id - 1)));
@@ -82,7 +82,7 @@ int	eating(t_philo *philo)
 	lock_fork(&philo->forks[fork2], philo);
 	if (is_dead(philo))
 		return (0);
-	print_status(philo, "is eating");
+	print_status(philo, "is eating", ORANGE);
 	sleep_time(philo->data->t_eat, philo);
 	philo->last_meal = get_time();
 	unlock_fork(&philo->forks[fork1], philo);
@@ -93,20 +93,22 @@ int	eating(t_philo *philo)
 
 void	sleeping(t_philo *philo)
 {
-	print_status(philo, "is sleeping");
+	print_status(philo, "is sleeping", PINK);
 	sleep_time(philo->data->t_sleep, philo);
 }
-int is_dead(t_philo *philo)
+
+int	is_dead(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->death.lock);
 	if (philo->data->death.status == 1)
 	{
-		pthread_mutex_unlock(&philo->data->death.lock);	
+		pthread_mutex_unlock(&philo->data->death.lock);
 		return (1);
 	}
 	pthread_mutex_unlock(&philo->data->death.lock);
 	return (0);
 }
+
 int	death_checker(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->death.lock);
@@ -118,7 +120,7 @@ int	death_checker(t_philo *philo)
 			return (1);
 		}
 		pthread_mutex_lock(&philo->data->print);
-		printf("%llu %d died\n", time_diff(), philo->id);
+		printf("%s%lu %d died\n", RED, time_diff(), philo->id);
 		pthread_mutex_unlock(&philo->data->print);
 		philo->data->death.status = 1;
 		pthread_mutex_unlock(&philo->data->death.lock);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 20:22:49 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/13 12:28:53 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:29:43 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_putstr_fd(char *str, int fd)
 int	ft_error_msg(char *msg)
 {
 	ft_putstr_fd(msg, 1);
-	return(0);
+	return (0);
 }
 
 int	ft_atoi(const char *str)
@@ -56,7 +56,7 @@ int	ft_atoi(const char *str)
 	return (sign * res);
 }
 
-void	print_status(t_philo *philo, char *status)
+void	print_status(t_philo *philo, char *status, char *color)
 {
 	pthread_mutex_lock(&philo->data->death.lock);
 	if (philo->data->death.status == 1)
@@ -65,7 +65,7 @@ void	print_status(t_philo *philo, char *status)
 		return ;
 	}
 	pthread_mutex_lock(&philo->data->print);
-	printf("%llu %d %s\n", time_diff(), philo->id, status);
+	printf("%s%lu %d %s\n", color, time_diff(), philo->id, status);
 	pthread_mutex_unlock(&philo->data->print);
 	pthread_mutex_unlock(&philo->data->death.lock);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:35:37 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/13 15:33:40 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:58:49 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ int	create_threads(t_philo	*philos)
 	while (++i < philos[0].data->n_philos)
 		if (pthread_join(philos[i].philo, NULL))
 			return (0);
+	clean_program(philos, philos->forks);
 	return (1);
 }
 
 t_fork	*init_forks(t_data *data)
 {
-	int	i;
+	int		i;
 	t_fork	*forks;
 
 	i = -1;
@@ -47,7 +48,7 @@ t_fork	*init_forks(t_data *data)
 
 void	init_philos(t_data *data, t_philo *philos, t_fork *forks)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < data->n_philos)
