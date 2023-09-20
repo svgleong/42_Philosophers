@@ -6,7 +6,7 @@
 #    By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 19:11:20 by svalente          #+#    #+#              #
-#    Updated: 2023/09/14 14:01:44 by svalente         ###   ########.fr        #
+#    Updated: 2023/09/19 10:58:31 by svalente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ RM = rm -f
 HEADER = philo.h
 
 INC = ./includes
-CFLAGS = -Wall -Werror -Wextra -I$(INC) -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -I$(INC) -g -fsanitize=thread
 
 SRC_PATH = ./srcs
 

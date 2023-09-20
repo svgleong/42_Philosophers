@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 20:15:01 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 13:41:37 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:52:37 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	check_arguments(int ac, char **av)
 	{
 		if (!check_num(av[i]) || !check_limits(av[i]))
 			return (ft_error_msg("Error: Invalid arguments\n"));
+		if (av[i] == NULL)
+			return (ft_error_msg("Error: Invalid arguments\n"));
 		i++;
 	}
 	return (1);
@@ -36,6 +38,8 @@ static int	check_num(char *str)
 	int	i;
 
 	i = 0;
+	if (!str || !str[0])
+		return (0);
 	while (str[i])
 	{
 		if (i == 0 && (str[i] == '+'))

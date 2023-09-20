@@ -6,7 +6,7 @@
 /*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:58:05 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/14 16:18:40 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:10:46 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	*routine(void *philo)
 		usleep(1000);
 		if (is_dead(phi))
 			return (NULL);
-		print_status(phi, "is thinking", GREEN);
+		if (phi->n_meals < phi->data->n_eat)
+			print_status(phi, "is thinking", GREEN);
 	}
 	return (NULL);
 }
@@ -88,8 +89,8 @@ int	eating(t_philo *philo)
 	if (is_dead(philo))
 		return (0);
 	print_status(philo, "is eating", ORANGE);
-	sleep_time(philo->data->t_eat, philo);
 	philo->last_meal = get_time();
+	sleep_time(philo->data->t_eat, philo);
 	unlock_fork(&philo->forks[fork1], philo);
 	unlock_fork(&philo->forks[fork2], philo);
 	philo->n_meals++;
@@ -98,6 +99,9 @@ int	eating(t_philo *philo)
 
 void	sleeping(t_philo *philo)
 {
-	print_status(philo, "is sleeping", PINK);
-	sleep_time(philo->data->t_sleep, philo);
+	if (philo->n_meals < philo->data->n_eat)
+	{
+		print_status(philo, "is sleeping", PINK);
+		sleep_time(philo->data->t_sleep, philo);
+	}
 }
