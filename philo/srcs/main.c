@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svalente <svalente@student.42lisboa.com >  +#+  +:+       +#+        */
+/*   By: svalente <svalente@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 19:58:38 by svalente          #+#    #+#             */
-/*   Updated: 2023/09/19 09:52:17 by svalente         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:09:10 by svalente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ int	main(int ac, char **av)
 	if (!philos)
 		return (clean_program(philos, forks));
 	init_philos(data(), philos, forks);
-	create_threads(philos);
+	if (!create_threads(philos))
+		return (clean_program(philos, forks));
 }
